@@ -13,6 +13,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/toni', function () {
     return view('welcome');
 });
+
+Route::get('/bem-vindo', function () {
+    echo('ola mundo');
+});
+
+Route::get('/', function () {
+    echo('<h2>Ola mundo </h2>');
+});
+
+Route::get('bem-vindo/aedah', function(){
+   echo('<h1>Ola</h2>'); 
+});
+
+Route::get('/nome/{nome}', function($nome){
+   echo('<h1>Ola '.$nome.'</h1>');
+});
+
+Route::get('/nome/{nome}/{aplido}', function($nome,$aplido){
+    echo('<h1>Ola '.$nome.' '.$aplido.'</h1>');
+});
+
+Route::get('/nomes/{nome}/{numero}', function($nome,$numero){
+    $n=is_numeric($numero) ? $numero : 5;
+   for($i=1;$i<=$n;$i++)
+   {
+       echo($nome);
+       echo('<br>');
+   }
+});
+
