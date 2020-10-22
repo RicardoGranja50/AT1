@@ -49,11 +49,14 @@ class PortalController extends Controller
                 
                 if(count($this->teams)>$casa || $casa >= 0 || count($this->teams)>$fora || $fora >= 0){
                     
-                    return view('jogo', ['casa' =>$casa], ['fora' => %fora]);
+                    return view('jogo', ['casa' =>$casa], ['fora' => $fora]);
                 }
                 elseif((count($this->teams)<$casa || $casa < 0 || count($this->teams)<$fora || $fora < 0 ) || ! is_numeric ($casa) || ! is_numeric ($fora)){
                     
-                    
+                    return view('equipas', ['ajudar' =>$ajudar]);
+                }
+                else{
+                    return view('equipas', ['equipas'=>$this->teams]);
                 }
             }
         }
