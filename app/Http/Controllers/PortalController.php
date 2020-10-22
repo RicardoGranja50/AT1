@@ -41,24 +41,39 @@ class PortalController extends Controller
         }
     }
         
-        public function jogo(Request $request){
-            $casa = $request -> casa; 
-            $fora=$request->fora;  
+    public function jogo(Request $request){
+        $casa = $request -> casa; 
+        $fora=$request->fora;  
             
-            if(isset ($casa)&& isset($fora)){
+        if(isset ($casa)&& isset($fora)){
                 
-                if(count($this->teams)>$casa || $casa >= 0 || count($this->teams)>$fora || $fora >= 0){
+            if(count($this->teams)>$casa || $casa >= 0 || count($this->teams)>$fora || $fora >= 0){
                     
-                    return view('jogo', ['casa' =>$casa], ['fora' => $fora]);
-                }
-                elseif((count($this->teams)<$casa || $casa < 0 || count($this->teams)<$fora || $fora < 0 ) || ! is_numeric ($casa) || ! is_numeric ($fora)){
+                return view('jogo', ['casa' =>$casa], ['fora' => $fora]);
+            }
+            elseif((count($this->teams)<$casa || $casa < 0 || count($this->teams)<$fora || $fora < 0 ) || ! is_numeric ($casa) || ! is_numeric ($fora)){
                     
-                    return view('equipas', ['ajudar' =>$ajudar]);
-                }
-                else{
-                    return view('equipas', ['equipas'=>$this->teams]);
-                }
+                return view('equipas', ['ajudar' =>$ajudar]);
+            }
+            else{
+                return view('equipas', ['equipas'=>$this->teams]);
             }
         }
+    }
+
+    public function mostrarForm(){
+        return view('contacto');
+    }
+
+    public function processarForm(Request $r){
+        $nome = $r->nome;
+        $morada = $r->morada;
+        $automovel = $r->automovel;
+        return view('enviado', [
+            'nome'=>$nome,
+            'morada'=>$morada,
+            'automovel'=>$automovel
+        ]);
+    }
 }
 

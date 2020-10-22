@@ -74,3 +74,7 @@ Route::get('/equipas', 'App\Http\Controllers\PortalController@listarEquipas')->n
 Route::get('/equipas/{chave?}', 'App\Http\Controllers\PortalController@listarEquipa');
 
 Route::get('/equipas/{casa}/{fora}', 'App\Http\Controllers\PortalController@jogo');
+
+Route::get('/contacto', 'App\Http\Controllers\PortalController@mostrarForm')->name('contacto.index');
+
+Route::post('/processar', 'App\Http\Controllers\PortalController@processarForm')->name('processar.form');
