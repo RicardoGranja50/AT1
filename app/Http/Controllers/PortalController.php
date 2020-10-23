@@ -71,8 +71,7 @@ class PortalController extends Controller
         $automovel = $r->automovel;
         return view('enviado', [
             'nome'=>$nome,
-            'morada'=>$morada,
-            'automovel'=>$automovel
+            'password'=>password
         ]);
     }
 }
